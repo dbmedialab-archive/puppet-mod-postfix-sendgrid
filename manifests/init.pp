@@ -13,9 +13,9 @@ class postfix {
   }
 
   exec { 'restart postfix' :
-    command => 'postfix status && postfix stop && postfix start || postfix start',
-    cwd => '/usr/sbin',
-    user => 'root',
+    path        =>  '/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin',
+    command     => 'postfix status && postfix stop && postfix start || postfix start',
+    user        => 'root',
     refreshonly => true,
   }
 
