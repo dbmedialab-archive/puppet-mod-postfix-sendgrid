@@ -3,6 +3,7 @@
 class postfix {
 
   include postfix::config
+  include postfix::packages
 
   file { $postfix::config::mainfile:
     content => template('postfix/main.cf.erb'),
