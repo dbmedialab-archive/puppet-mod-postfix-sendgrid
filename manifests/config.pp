@@ -19,7 +19,7 @@ class postfix::config (
   $relayhost = '[smtp.sendgrid.net]:2525'
 
   file { '/etc/postfix/sasl_passwd':
-    mode    => 0600,
+    mode    => '0600',
     content => "[smtp.sendgrid.net]:2525 ${username}:${password}",
     notify  => Exec['postmap_sasl_config'],
   }
