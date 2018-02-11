@@ -7,8 +7,6 @@ class postfix {
 
   file { $postfix::config::mainfile:
     content => template('postfix/main.cf.erb'),
-    group   => 'wheel',
-    owner   => 'root',
     notify  => Exec['restart postfix'],
   }
 
