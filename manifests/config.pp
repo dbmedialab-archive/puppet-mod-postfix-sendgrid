@@ -16,11 +16,11 @@ class postfix::config (
   $smtp_sasl_security_options = 'noanonymous'
   $smtp_tls_security_level = 'encrypt'
   $header_size_limit = 4096000
-  $relayhost = '[smtp.sendgrid.net]:2525'
+  $relayhost = '[smtp.sendgrid.net]:587'
 
   file { '/etc/postfix/sasl_passwd':
     mode    => '0600',
-    content => "[smtp.sendgrid.net]:2525 ${username}:${password}",
+    content => "[smtp.sendgrid.net]:587 ${username}:${password}",
     notify  => Exec['postmap_sasl_config'],
   }
 
