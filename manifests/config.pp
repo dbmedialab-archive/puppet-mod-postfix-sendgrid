@@ -28,6 +28,7 @@ class postfix::config (
     path        => '/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin',
     command     => 'postmap /etc/postfix/sasl_passwd',
     refreshonly => true,
+    require     => File[$mainfile],
   }
 
   file { '/etc/postfix/sasl_passwd.db':
