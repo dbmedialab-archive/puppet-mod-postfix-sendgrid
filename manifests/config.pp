@@ -19,21 +19,21 @@ class postfix::config (
   $relayhost = '[smtp.sendgrid.net]:2525'
 
   file { '/etc/postfix/sasl_passwd':
-    mode    => '0600',
     content => "[smtp.sendgrid.net]:2525 ${username}:${password}",
+    mode    => '0600',
     notify  => Exec['postmap_sasl_config'],
   }
 
   exec { 'postmap_sasl_config':
-    path        => '/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin',
-    command     => 'postmap /etc/postfix/sasl_passwd',
-    refreshonly => true,
-    require     => File[$mainfile],
+    command => 'postmap /etc/postfix/sasl_passwd',
+    unless  => "postmap -s /etc/postfix/sasl_passwd | grep -P \"\[smtp.sendgrid.net\]:2525[[:space:]]\" | grep -q ${username}:${password}",
+    path    => '/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin',
+    require => File[$mainfile],
   }
 
   file { '/etc/postfix/sasl_passwd.db':
-    mode    => '0600',
     content => '-',
+    mode    => '0600',
     replace => 'no',
     require => Exec['postmap_sasl_config'],
   }
