@@ -56,7 +56,7 @@ data_directory = /var/lib/postfix
 # particular, don't specify nobody or daemon. PLEASE USE A DEDICATED
 # USER.
 #
-mail_owner = _postfix
+mail_owner = postfix
 
 # The default_privs parameter specifies the default rights used by
 # the local delivery agent for delivery to external file or command.
@@ -631,7 +631,7 @@ mailq_path = /usr/bin/mailq
 # commands.  This must be a group name with a numerical group ID that
 # is not shared with other accounts, not even with the Postfix account.
 #
-setgid_group = _postdrop
+setgid_group = postdrop
 
 # html_directory: The location of the Postfix HTML documentation.
 #
