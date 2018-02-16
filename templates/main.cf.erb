@@ -697,4 +697,4 @@ smtp_sasl_security_options = <%= scope.lookupvar "postfix::config::smtp_sasl_sec
 smtp_tls_security_level = <%= scope.lookupvar "postfix::config::smtp_tls_security_level" %>
 header_size_limit = <%= scope.lookupvar "postfix::config::header_size_limit" %>
 relayhost = <%= scope.lookupvar "postfix::config::relayhost" %>
-myorigin = <%= @hostname %>.<%= @project.projectId %>
+myorigin = <%= scope.lookupvar "postfix::config::myorigin" %>

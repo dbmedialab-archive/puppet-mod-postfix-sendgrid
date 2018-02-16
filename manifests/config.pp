@@ -3,6 +3,7 @@
 class postfix::config (
   $username,
   $password,
+  $myorigin = '$mydomain',
 ) {
 
   $mainfile = '/etc/postfix/main.cf'
