@@ -39,4 +39,15 @@ class postfix::config (
     require => Exec['postmap_sasl_config'],
   }
 
+  file { '/etc/aliases':
+    content => template('postfix/aliases.erb'),
+    notify  => Exec['newaliases'],
+  }
+
+  exec { 'newaliases':
+    command => 'newaliases',
+    path    => '/usr/local/sbin:/sbin:/bin:/usr/sbin:/usr/bin',
+    refreshonly => 'true',
+  }
+
 }
